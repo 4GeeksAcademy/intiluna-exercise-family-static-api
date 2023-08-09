@@ -37,7 +37,7 @@ def get_family_members():
 
     return jsonify(response_body), 200
 
-#
+# get one member
 @app.route('/member/<int:member_id>', methods=['GET'])
 def get_one_member_info(member_id):
 
@@ -45,6 +45,23 @@ def get_one_member_info(member_id):
     member_information = jackson_family.get_member(member_id)
     response_body = {
         "member": member_information
+    }
+
+
+    return jsonify(response_body), 200
+
+# add one member
+@app.route('/member', methods=['POST'])
+def add_one_member():
+
+    #get body coming in information
+    request_body = request.get_json(force=True)
+
+    # this is how you can use the Family datastructure by calling its methods
+    jackson_family.add_member(request_body['first_name'],request_body['age'],request_body['lucky_numbers'])
+
+    response_body = {
+        "new member": "ok"
     }
 
 
