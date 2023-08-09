@@ -54,7 +54,11 @@ class FamilyStructure:
 
     def get_member(self, id):
         # fill this method and update the return
-        pass
+        member = list(filter(lambda item: item['id'] == id , self._members))
+        return member
+
+
+        #pass
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self): 
